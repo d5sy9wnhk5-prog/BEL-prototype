@@ -70,5 +70,22 @@
     <div class="motto">Là où le cœur ne s’enfle pas<br>et la pensée s’exprime librement,<br>dans le plus grand respect, dans la plus grande élégance.</div>
   </section>
 </main>
+
+<style>
+#bel-entry{position:fixed;top:24px;right:28px;z-index:99;font:10px Arial,sans-serif;letter-spacing:.18em;color:#9f9b94}
+.portal{cursor:pointer}
+.portal.bel-open{transform:scale(1.06)!important;filter:drop-shadow(0 0 65px rgba(160,220,205,.28))!important}
+.portal.bel-open:after{background:radial-gradient(ellipse at center,rgba(230,248,242,.22),rgba(75,135,120,.20) 35%,transparent 67%)}
+</style>
+<div id="bel-entry">TOUCHER LE GYROSCOPE · ENTRER DANS LA LUDOPIE</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+ const p=document.querySelector('.portal');
+ if(p){p.addEventListener('click',function(){p.classList.toggle('bel-open');
+ const h=document.getElementById('bel-entry');
+ h.textContent=p.classList.contains('bel-open')?'LA LUDOPIE APPARAÎT · TOUCHER POUR REVENIR':'TOUCHER LE GYROSCOPE · ENTRER DANS LA LUDOPIE';
+ });}
+});
+</script>
 </body>
 </html>
