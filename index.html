@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BEL — Prototype</title>
+<style>
+  :root{--bg:#07090b;--ivory:#eee9df;--gold:#c9a86a;--muted:#9f9b94}
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--ivory);font-family:Georgia,"Times New Roman",serif}
+  body{overflow:hidden}
+  .stage{height:100%;display:grid;grid-template-columns:minmax(150px,19vw) 1fr;position:relative;background:
+    radial-gradient(circle at 70% 45%,rgba(220,235,240,.12),transparent 23%),
+    radial-gradient(circle at 70% 45%,rgba(201,168,106,.08),transparent 42%),
+    #07090b}
+  .side{padding:34px 28px;border-right:1px solid rgba(255,255,255,.08);z-index:4}
+  .bel{font-size:34px;letter-spacing:.28em;color:#e7d3a7}
+  .sub{font-size:11px;letter-spacing:.18em;color:#aaa;margin-top:8px}
+  .moments{margin-top:70px;display:grid;gap:34px}
+  .moment{display:flex;gap:14px;align-items:center;color:#bcb8b0}
+  .dot{width:34px;height:34px;border:1px solid #777;border-radius:50%;box-shadow:0 0 18px rgba(255,255,255,.08) inset}
+  .sun{background:radial-gradient(circle,#d9b35c 0 22%,transparent 24%)}
+  .moon{background:radial-gradient(circle at 62% 42%,transparent 0 35%,#c9d7db 37% 47%,transparent 49%)}
+  .moment b{font-weight:400;font-size:18px;color:#ddd}
+  .moment small{display:block;margin-top:4px;font-size:10px;letter-spacing:.12em}
+  .main{position:relative;display:flex;align-items:center;justify-content:center;perspective:900px}
+  .portal{width:min(68vw,900px);height:min(76vh,720px);border-radius:50%;position:absolute;
+    background:
+      radial-gradient(ellipse at center,rgba(218,235,230,.95) 0 6%,rgba(95,155,128,.75) 7% 13%,rgba(180,205,225,.22) 14% 23%,transparent 24%),
+      repeating-radial-gradient(ellipse at center,transparent 0 34px,rgba(215,230,235,.11) 36px 40px,transparent 43px 70px);
+    filter:drop-shadow(0 0 35px rgba(215,230,235,.10));
+    animation:breathe 8s ease-in-out infinite}
+  .portal:after{content:"";position:absolute;inset:13%;border-radius:50%;border:1px solid rgba(230,240,245,.18);
+    box-shadow:0 0 50px rgba(220,235,240,.12) inset}
+  @keyframes breathe{50%{transform:scale(1.018);filter:drop-shadow(0 0 48px rgba(215,230,235,.16))}}
+  .gyro{width:310px;height:310px;position:relative;z-index:3;animation:float 7s ease-in-out infinite}
+  .ring{position:absolute;inset:18px;border:2px solid rgba(224,203,157,.72);border-radius:50%;box-shadow:0 0 12px rgba(201,168,106,.16)}
+  .r2{inset:55px;transform:rotateX(67deg);animation:spin 15s linear infinite}
+  .r3{inset:55px;transform:rotateY(68deg);animation:spin2 19s linear infinite}
+  .core{position:absolute;left:50%;top:50%;width:56px;height:56px;transform:translate(-50%,-50%);border-radius:50%;
+    border:1px solid rgba(240,225,190,.8);background:radial-gradient(circle at 38% 32%,rgba(255,255,255,.55),rgba(201,168,106,.16) 40%,rgba(0,0,0,.15) 72%)}
+  @keyframes spin{to{transform:rotateX(67deg) rotateZ(360deg)}}
+  @keyframes spin2{to{transform:rotateY(68deg) rotateZ(-360deg)}}
+  @keyframes float{50%{transform:translateY(-7px)}}
+  .caption{position:absolute;bottom:7vh;left:50%;transform:translateX(-50%);z-index:5;text-align:center;width:75%}
+  .caption h1{font-weight:400;font-size:25px;letter-spacing:.03em;color:#ddc28a;margin:0 0 10px}
+  .caption p{margin:0;color:#bbb;font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+  .motto{position:absolute;right:28px;bottom:22px;z-index:5;text-align:right;color:#9d9991;font-size:12px;line-height:1.6;letter-spacing:.05em}
+  @media(max-width:700px){.stage{grid-template-columns:1fr}.side{position:absolute;border:0;padding:20px}.moments{display:none}.gyro{width:240px;height:240px}.portal{width:92vw;height:66vh}.motto{font-size:10px}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<main class="stage">
+  <aside class="side">
+    <div class="bel">BEL</div>
+    <div class="sub">BAROMÈTRE ÉMOTIONNEL LUDOPIEN</div>
+    <div class="moments">
+      <div class="moment"><span class="dot"></span><div><b>Matin</b><small>ÉCOUTER</small></div></div>
+      <div class="moment"><span class="dot sun"></span><div><b>Midi</b><small>ÉCLAIRER</small></div></div>
+      <div class="moment"><span class="dot moon"></span><div><b>Soir</b><small>INTÉGRER</small></div></div>
+    </div>
+  </aside>
+  <section class="main" aria-label="Seuil vers la Ludopie">
+    <div class="portal" aria-hidden="true"></div>
+    <div class="gyro" aria-label="Gyroscope émotionnel">
+      <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div><div class="core"></div>
+    </div>
+    <div class="caption"><h1>La Ludopie est simplement perceptible.</h1><p>Le gyroscope traduit ce qui est là.</p></div>
+    <div class="motto">Là où le cœur ne s’enfle pas<br>et la pensée s’exprime librement,<br>dans le plus grand respect, dans la plus grande élégance.</div>
+  </section>
+</main>
+</body>
+</html>
